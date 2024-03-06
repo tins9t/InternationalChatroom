@@ -6,7 +6,7 @@ namespace InternationalChatroom.ClientEventHandlers;
 
 public class ClientWantsToEchoServerDto : BaseDto
 { 
-    public string messageContent { get; set; }
+    public string MessageContent { get; set; }
 }
 
 public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerDto>
@@ -15,7 +15,7 @@ public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerD
     {
         var echo = new ServerEchosClient()
         {
-            echoValue = "echo: " + dto.messageContent
+            EchoValue = "echo: " + dto.MessageContent
         };
         var messageToClient = JsonSerializer.Serialize(echo);
         socket.Send(messageToClient);
@@ -25,5 +25,5 @@ public class ClientWantsToEchoServer : BaseEventHandler<ClientWantsToEchoServerD
 
 public class ServerEchosClient : BaseDto
 {
-    public string echoValue { get; set; }
+    public string EchoValue { get; set; }
 }

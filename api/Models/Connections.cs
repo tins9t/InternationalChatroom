@@ -3,6 +3,6 @@ namespace InternationalChatroom.Models;
 
 public class Connections
 {
-    public static List<IWebSocketConnection> allSockets = new List<IWebSocketConnection>();
+    public static List<IWebSocketConnection> AllSockets = new List<IWebSocketConnection>();
 
 }

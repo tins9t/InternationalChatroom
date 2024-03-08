@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "qiy951sPOXoJZxsl7mgxxj3fq6YqXuBCC2CQshUQ+hrOGEvCTuDKI0G8vXqXQUVKrmhGt5/2mWE6ofCT3SOLMQ==",
+  "dgSpecHash": "6HQSY08+IRvKMSbE8hgCC/Kucie0f5yAy77uLF/5cHUUiFX1rM6zR6/ngEdLKJt/5xProv9ECvPuW0vo2TNr9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nhi_t\\RiderProjects\\InternationalChatroom\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\madsp\\Documents\\rpn_calculator\\InternationalChatroom\\api\\api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\nhi_t\\.nuget\\packages\\fleck\\1.2.0\\fleck.1.2.0.nupkg.sha512",
-    "C:\\Users\\nhi_t\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
-    "C:\\Users\\nhi_t\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
-    "C:\\Users\\nhi_t\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
-    "C:\\Users\\nhi_t\\.nuget\\packages\\uldahlalex.websocket.boilerplate\\1.6.0\\uldahlalex.websocket.boilerplate.1.6.0.nupkg.sha512",
-    "C:\\Users\\nhi_t\\.nuget\\packages\\websocket.client\\5.0.0\\websocket.client.5.0.0.nupkg.sha512"
+    "C:\\Users\\madsp\\.nuget\\packages\\fleck\\1.2.0\\fleck.1.2.0.nupkg.sha512",
+    "C:\\Users\\madsp\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\madsp\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
+    "C:\\Users\\madsp\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
+    "C:\\Users\\madsp\\.nuget\\packages\\uldahlalex.websocket.boilerplate\\1.6.0\\uldahlalex.websocket.boilerplate.1.6.0.nupkg.sha512",
+    "C:\\Users\\madsp\\.nuget\\packages\\websocket.client\\5.0.0\\websocket.client.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

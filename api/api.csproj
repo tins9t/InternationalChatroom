@@ -12,4 +12,8 @@
       <PackageReference Include="uldahlalex.websocket.boilerplate" Version="1.6.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="obj\.gitignore" />
+    </ItemGroup>
+
 </Project>

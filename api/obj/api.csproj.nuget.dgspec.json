@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nhi_t\\RiderProjects\\InternationalChatroom\\api\\api.csproj": {}
+    "C:\\Users\\madsp\\Documents\\rpn_calculator\\InternationalChatroom\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nhi_t\\RiderProjects\\InternationalChatroom\\api\\api.csproj": {
+    "C:\\Users\\madsp\\Documents\\rpn_calculator\\InternationalChatroom\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nhi_t\\RiderProjects\\InternationalChatroom\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\madsp\\Documents\\rpn_calculator\\InternationalChatroom\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\nhi_t\\RiderProjects\\InternationalChatroom\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\nhi_t\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nhi_t\\RiderProjects\\InternationalChatroom\\api\\obj\\",
+        "projectPath": "C:\\Users\\madsp\\Documents\\rpn_calculator\\InternationalChatroom\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\madsp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\madsp\\Documents\\rpn_calculator\\InternationalChatroom\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nhi_t\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\madsp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -66,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.2.23502.2/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
         }
       }
     }

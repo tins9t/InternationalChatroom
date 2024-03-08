@@ -4,9 +4,6 @@ using InternationalChatroom.Models;
 using InternationalChatroom.State;
 using lib;
 
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
-
 public static class Startup
 {
     public static void Main(string[] args)

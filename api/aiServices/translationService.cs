@@ -9,6 +9,8 @@ public class TranslationService {
     
     public static async Task GetLanguages()
     {
+        
+        //https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-languages
         try
         {
             string url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation";
@@ -34,6 +36,7 @@ public class TranslationService {
         }
     }
     
+    //https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-translate
     static Task GetListofLanguages(String responseContent)
     {
         // Parse the JSON response

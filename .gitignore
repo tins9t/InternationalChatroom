@@ -1,11 +1,8 @@
 bin/
 obj/
 /packages/
-riderModule.iml
 /_ReSharper.Caches/
-.idea/workspace.xml
 Tests/node_modules/
 /angular/
 /node_modules/
-Frontend/.angular/
-Frontend/node_modules/
+

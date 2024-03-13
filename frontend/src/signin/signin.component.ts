@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {Button, LanguageRootObject} from '../models/entities';
+import {Button, LanguageInfo} from '../models/entities';
 import {WebsocketService} from "../service/websocket.service";
-import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, FormsModule],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
@@ -24,9 +25,11 @@ export class SigninComponent {
   ];
   username = new FormControl('')
   selectedChatroomId: number | null = null;
-  languages: LanguageRootObject[] = [];
+  selectedLanguage: string | null = null;
+  languages: { [key: string]: LanguageInfo } = {};
 
   constructor(private service: WebsocketService, private router: Router, private http : HttpClient) {
+    this.getLanguages();
   }
 
   selectChatroom(roomId: number | undefined): void {
@@ -51,6 +54,15 @@ export class SigninComponent {
   }
 
   async getLanguages(){
-    const call = this.http.get<LanguageRootObject[]>("http://localhost:5082/api/languages");
+    try {
+      const call = this.http.get<{ [key: string]: LanguageInfo }>("http://localhost:5082/api/languages");
+      this.languages = await firstValueFrom<{ [key: string]: LanguageInfo }>(call);
+    } catch (error) {
+      console.error('Error fetching languages: ', error);
+    }
+  }
+
+  selectLanguage() {
+    console.log("Selected language key: " + this.selectedLanguage);
   }
 }

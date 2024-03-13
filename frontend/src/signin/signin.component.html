@@ -12,10 +12,11 @@
 
 <div><input [formControl]="username" type="text" id="username" placeholder="Enter your username">
 
-<select id="language">
-  <option value="english">English</option>
-  <option value="spanish">Spanish</option>
-</select>
+  <select id="language" [(ngModel)]="selectedLanguage" (change)="selectLanguage()">
+      <option *ngFor="let language of languages | keyvalue" [value]="language.key">
+        {{ language.value.nativeName }}
+      </option>
+  </select>
 </div>
 
 <button (click)="clickStart()">Start chatting!</button>

@@ -9,6 +9,15 @@ var app = await ApiStartUp.StartApi();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
+
+app.UseCors(options =>
+{
+    options.SetIsOriginAllowed(origin => true)
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials();
+});
+
 app.Run();
 
 public static class ApiStartUp

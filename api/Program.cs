@@ -32,7 +32,10 @@ public static class Startup
 
                 try
                 {
-                      await TranslationService.GetLanguages();
+                    MessageToTranslate messageToTranslate = new MessageToTranslate();
+                    messageToTranslate.To = "de";
+                    messageToTranslate.Text = "Hello";
+                    await TranslationService.TranslateText(messageToTranslate);
                 }  catch (Exception e)
                 {
                     Console.WriteLine(e.Message);

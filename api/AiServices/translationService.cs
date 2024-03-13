@@ -45,18 +45,20 @@ public class TranslationService {
     
 
 
-    private readonly string Key = Environment.GetEnvironmentVariable("apikey");
-    private readonly string Endpoint = "https://chatroomtranslator.cognitiveservices.azure.com/";
+   
 
-    // location, also known as region.
-    // required if you're using a multi-service or regional (not global) resource. It can be found in the Azure portal on the Keys and Endpoint page.
-    private static readonly string Location = "northeurope";
-
-    async Task TranslateText(MessageToTranslate messageToTranslate)
+    public static async Task TranslateText(MessageToTranslate messageToTranslate)
     {
+        string Key = Environment.GetEnvironmentVariable("apikey");
+        string Endpoint = "https://api.cognitive.microsofttranslator.com";
+
+        // location, also known as region.
+        // required if you're using a multi-service or regional (not global) resource. It can be found in the Azure portal on the Keys and Endpoint page.
+        string Location = "northeurope";
         // Output languages are defined as parameters, input language detected.
-        string route = "/translate?api-version=3.0&to=en";
-        string textToTranslate = messageToTranslate.textToTranslate;
+        
+        string route = "/translate?api-version=3.0"+ "&to=" + messageToTranslate.To;
+        string textToTranslate = messageToTranslate.Text;
         object[] body = new object[] { new { Text = textToTranslate } };
         var requestBody = JsonConvert.SerializeObject(body);
 
@@ -70,7 +72,7 @@ public class TranslationService {
             request.Headers.Add("Ocp-Apim-Subscription-Key", Key);
             // location required if you're using a multi-service or regional (not global) resource.
             request.Headers.Add("Ocp-Apim-Subscription-Region", Location);
-
+            Console.WriteLine(request);
             // Send the request and get response.
             HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
             // Read response as a string.
@@ -82,8 +84,8 @@ public class TranslationService {
 
 public class MessageToTranslate
 {
-    public string? textToTranslate { get; set; }
-    public string? endLanguage { get; set; }
+    public string? Text { get; set; }
+    public string? To { get; set; }
 }
 
 public class ResponseModelTranslatedLanguage {

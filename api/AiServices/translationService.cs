@@ -1,14 +1,13 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
-
-
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
 namespace InternationalChatroom.aiServices;
 
 public class TranslationService {
     
-    public static async Task GetLanguages()
+    public static async Task<Dictionary<string, LanguageInfo>> GetLanguages()
     {
         
         //https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-languages
@@ -23,9 +22,17 @@ public class TranslationService {
 
                 if (response.IsSuccessStatusCode)
                 {
-                    JsonConvert.DeserializeObject<LanguageRootObject>(rep);
-                    Console.WriteLine(LanguageRootObject.languageList);
-                    
+                    LanguageRootObject languageRootObject = JsonSerializer.Deserialize<LanguageRootObject>(rep);
+                    foreach (var language in languageRootObject.translation)
+                    {
+                        Console.WriteLine($"Language Code: {language.Key}");
+                        Console.WriteLine($"Name: {language.Value.name}");
+                        Console.WriteLine($"Native Name: {language.Value.nativeName}");
+                        Console.WriteLine($"Dir: {language.Value.dir}");
+                        Console.WriteLine();
+                    }
+
+                    return languageRootObject.translation;
                 }
                 else
                 {
@@ -39,6 +46,8 @@ public class TranslationService {
             Console.WriteLine(ex.InnerException);
             Console.WriteLine(ex.StackTrace);
         }
+
+        throw new Exception();
     }
     
     //https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-translate
@@ -102,7 +111,7 @@ public class DetectedLanguage
 }
 public class LanguageRootObject
 {
-    public static Dictionary<string, LanguageInfo> languageList { get; set; }
+    public Dictionary<string, LanguageInfo> translation { get; set; }
 }
 public class LanguageInfo
 {

@@ -9,5 +9,7 @@ export class Button {
 }
 
 export class LanguageInfo {
-  
+  name?: string;
+  nativeName?: string;
+  dir?: string;
 }

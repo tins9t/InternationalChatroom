@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf09d773-d578-49cc-b3d2-3ba54ba5155f" name="Changes" comment="yes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/AiServices/translationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/AiServices/translationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/ClientEventHandlers/ClientWantsToEnterRoom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/ClientEventHandlers/ClientWantsToEnterRoom.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/entities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/models/entities.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1709897155190</updated>
       <workItem from="1709897156238" duration="2483000" />
-      <workItem from="1710314194100" duration="1684000" />
+      <workItem from="1710314194100" duration="2278000" />
     </task>
     <task id="LOCAL-00001" summary="yes">
       <option name="closed" value="true" />

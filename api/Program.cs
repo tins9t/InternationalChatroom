@@ -5,6 +5,7 @@ using InternationalChatroom.Models;
 using InternationalChatroom.State;
 using lib;
 
+
 public static class Startup
 {
     public static void Main(string[] args)
@@ -13,18 +14,21 @@ public static class Startup
         Console.ReadLine();
     }
 
-    public static void Statup(string[] args)
+    public static WebApplication Statup(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
         var clientEventHandlers = builder.FindAndInjectClientEventHandlers(Assembly.GetExecutingAssembly());
 
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
         var app = builder.Build();
         
+
         var server = new WebSocketServer("ws://0.0.0.0:8181");
         server.Start(socket =>
         {
-            socket.OnOpen = () =>
+            socket.OnOpen = async () =>
             {
                 StateService.AddConnection(socket);
                 Console.WriteLine("Open!");
@@ -36,7 +40,9 @@ public static class Startup
                     messageToTranslate.To = "de";
                     messageToTranslate.Text = "Hello";
                     await TranslationService.TranslateText(messageToTranslate);
-                }  catch (Exception e)
+                    await TranslationService.GetLanguages();
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.InnerException);
@@ -61,7 +67,7 @@ public static class Startup
                 }
                 catch (Exception e)
                 {
-                    
+
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.InnerException);
                     Console.WriteLine(e.StackTrace);
@@ -69,5 +75,7 @@ public static class Startup
                 }
             };
         });
+        app.MapControllers();
+        return app;
     }
 }

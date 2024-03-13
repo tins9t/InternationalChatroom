@@ -1,19 +1,21 @@
+<h1>International Chatroom</h1>
+<h3>Chat with anyone from anywhere in the world!</h3>
 <div class="button-container">
-  <div class="button">Animals</div>
-  <div class="button">Sport</div>
-  <div class="button">Gaming</div>
-  <div class="button">General</div>
-  <div class="button">Movies</div>
-  <div class="button">Books</div>
-  <div class="button">News</div>
-  <div class="button">Anime</div>
-  <div class="button">Art</div>
-  <!-- Add more buttons as needed -->
-</div>
+  <div *ngFor="let button of buttons"
+       [class.active]="selectedChatroomId === button.roomId"
+       (click)="selectChatroom(button.roomId)"
+       class="button">
+    {{ button.name }}
+  </div></div>
 
-<input type="text" id="username" placeholder="Enter your username">
+<div style="margin-bottom: 20px;">Choose username and language!</div>
+
+<div><input [formControl]="username" type="text" id="username" placeholder="Enter your username">
 
 <select id="language">
   <option value="english">English</option>
   <option value="spanish">Spanish</option>
 </select>
+</div>
+
+<button (click)="clickStart()">Start chatting!</button>

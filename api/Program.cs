@@ -1,5 +1,6 @@
 using System.Reflection;
 using Fleck;
+using InternationalChatroom.aiServices;
 using InternationalChatroom.Models;
 using InternationalChatroom.State;
 using lib;
@@ -15,6 +16,7 @@ public static class Startup
     public static void Statup(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddSingleton<TranslationService>();
 
         var clientEventHandlers = builder.FindAndInjectClientEventHandlers(Assembly.GetExecutingAssembly());
 
@@ -28,6 +30,7 @@ public static class Startup
                 StateService.AddConnection(socket);
                 Console.WriteLine("Open!");
                 Connections.allSockets.Add(socket);
+                TranslationService.GetLanguages();
             };
             socket.OnClose = () =>
             {

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import {CommonModule} from "@angular/common";
-import { Button } from '../models/entities';
+import {Button, LanguageRootObject} from '../models/entities';
 import {WebsocketService} from "../service/websocket.service";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-signin',
@@ -23,8 +24,9 @@ export class SigninComponent {
   ];
   username = new FormControl('')
   selectedChatroomId: number | null = null;
+  languages: LanguageRootObject[] = [];
 
-  constructor(private service: WebsocketService, private router: Router) {
+  constructor(private service: WebsocketService, private router: Router, private http : HttpClient) {
   }
 
   selectChatroom(roomId: number | undefined): void {
@@ -46,5 +48,9 @@ export class SigninComponent {
       this.service.ws.send(JSON.stringify(object2))
       this.router.navigate(['/room/' + this.selectedChatroomId], {replaceUrl: true})
     }
+  }
+
+  async getLanguages(){
+    const call = this.http.get<LanguageRootObject[]>("http://localhost:5082/api/languages");
   }
 }

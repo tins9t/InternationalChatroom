@@ -5,23 +5,23 @@ using InternationalChatroom.Models;
 using InternationalChatroom.State;
 using lib;
 
+var app = await ApiStartUp.StartApi();
+app.UseSwagger();
+app.UseSwaggerUI();
+app.MapControllers();
+app.Run();
 
-public static class Startup
+public static class ApiStartUp
 {
-    public static void Main(string[] args)
+    public static async Task <WebApplication> StartApi()
     {
-        Statup(args);
-        Console.ReadLine();
-    }
-
-    public static WebApplication Statup(string[] args)
-    {
-        var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder();
 
         var clientEventHandlers = builder.FindAndInjectClientEventHandlers(Assembly.GetExecutingAssembly());
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
         var app = builder.Build();
         
 
@@ -75,7 +75,6 @@ public static class Startup
                 }
             };
         });
-        app.MapControllers();
         return app;
     }
 }

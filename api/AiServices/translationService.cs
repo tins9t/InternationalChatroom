@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+
+
+
 
 namespace InternationalChatroom.aiServices;
 
@@ -16,12 +18,14 @@ public class TranslationService {
 
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = await client.GetAsync(url);
+                HttpResponseMessage response = client.GetAsync(url).Result;
+                var rep = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
-                    string content = await response.Content.ReadAsStringAsync();
-                    await GetListofLanguages(content);
+                    JsonConvert.DeserializeObject<LanguageRootObject>(rep);
+                    Console.WriteLine(LanguageRootObject.languageList);
+                    
                 }
                 else
                 {
@@ -32,33 +36,12 @@ public class TranslationService {
         catch (Exception ex)
         {
             Console.WriteLine($"Exception: {ex.Message}");
+            Console.WriteLine(ex.InnerException);
+            Console.WriteLine(ex.StackTrace);
         }
     }
     
     //https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-translate
-    static Task GetListofLanguages(String responseContent)
-    {
-        // Parse the JSON response
-        JObject parsedResponse = JObject.Parse(responseContent);
-
-        // Extract language names and codes
-        List<string> languageList = new List<string>();
-        foreach (var lang in parsedResponse["translation"])
-        {
-            string langCode = lang.Path;
-            string langName = lang["name"].ToString();
-            languageList.Add($"{langName} ({langCode})");
-        }
-
-        // Print the language list
-        Console.WriteLine("Language List:");
-        foreach (var item in languageList)
-        {
-            Console.WriteLine(item);
-        }
-        return Task.CompletedTask;
-    }
-    
     
 
 
@@ -103,12 +86,31 @@ public class MessageToTranslate
     public string? endLanguage { get; set; }
 }
 
-public class TranslatedLanguage {
+public class ResponseModelTranslatedLanguage {
     
     public string? language { get; set; }
     public int score { get; set; }
     public string? text { get; set; }
     public string? to { get; set; }
-        
-   
+}
+public class DetectedLanguage
+{
+    public string language { get; set; }
+    public double score { get; set; }
+}
+public class LanguageRootObject
+{
+    public static Dictionary<string, LanguageInfo> languageList { get; set; }
+}
+public class LanguageInfo
+{
+    public string name { get; set; }
+    public string nativeName { get; set; }
+    public string dir { get; set; }
+}
+
+public class Translation
+{
+    public string text { get; set; }
+    public string to { get; set; }
 }

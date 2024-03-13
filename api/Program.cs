@@ -16,7 +16,6 @@ public static class Startup
     public static void Statup(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.AddSingleton<TranslationService>();
 
         var clientEventHandlers = builder.FindAndInjectClientEventHandlers(Assembly.GetExecutingAssembly());
 
@@ -30,7 +29,17 @@ public static class Startup
                 StateService.AddConnection(socket);
                 Console.WriteLine("Open!");
                 Connections.allSockets.Add(socket);
-                TranslationService.GetLanguages();
+
+                try
+                {
+                      await TranslationService.GetLanguages();
+                }  catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.InnerException);
+                    Console.WriteLine(e.StackTrace);
+                }
+
             };
             socket.OnClose = () =>
             {

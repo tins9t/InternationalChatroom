@@ -9,7 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c16d22c8-dce6-4947-8fdf-3e33544c41cc" name="Changes" comment="" />
+    <list default="true" id="c16d22c8-dce6-4947-8fdf-3e33544c41cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.InternationalChatroom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.InternationalChatroom/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/entities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/models/entities.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/signin/signin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/signin/signin.component.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +40,7 @@
     ".NET Launch Settings Profile.api: http.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -108,7 +116,8 @@
       <workItem from="1709897100172" duration="703000" />
       <workItem from="1710314169971" duration="74000" />
       <workItem from="1710314266664" duration="17000" />
-      <workItem from="1710314679590" duration="11574000" />
+      <workItem from="1710314679590" duration="11670000" />
+      <workItem from="1710327697306" duration="1862000" />
     </task>
     <task id="LOCAL-00001" summary="yes">
       <option name="closed" value="true" />

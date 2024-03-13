@@ -7,3 +7,7 @@ export class Button {
   roomId?: number;
   name?: string;
 }
+
+export class LanguageInfo {
+  
+}

@@ -21,6 +21,7 @@ export class RoomComponent {
   title: string | null = "🐶Animals🐶";
   messagesContent = new FormControl('')
 
+
   getRoomId(){
     return this.route.snapshot.params['roomId'];
   }

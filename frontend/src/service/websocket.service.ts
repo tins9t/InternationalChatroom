@@ -45,14 +45,21 @@ export class WebsocketService {
     }
   }
 
-  async translateText(text: string): Promise<string>{
-    const requestBody = { Text: text, To: this.getLanguageCode() };
-    console.log("Request Body:", requestBody);
-    const call = this.http.post<string>('http://localhost:5082/api/translate', requestBody);
-    const response = await firstValueFrom(call);
-    console.log(response);
-    return response;
+  async translateText(text: string): Promise<string> {
+    try {
+      const requestBody = { Text: text, To: this.getLanguageCode() };
+      const response = await this.http.post('http://localhost:5082/api/translate', requestBody, { responseType: 'text' }).toPromise();
+
+      // Log the response content
+      console.log('Response:', response);
+
+      return response!.trim(); // Trim any whitespace
+    } catch (error) {
+      console.error('Translation Error:', error);
+      throw error;
+    }
   }
+
 
   ServerBroadcastsMessageWithUsername(dto: ServerBroadcastsMessageWithUsernameDto) {
     if (dto.message !== undefined) {

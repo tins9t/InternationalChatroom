@@ -4,12 +4,13 @@
   <div class="container">
     <div *ngFor="let m of getMessages()" class="chat-container">
       <img src="assets/doggo.png" alt="Avatar" class="avatar">
-      <div class="message">
+      <div class="tooltip message" title="Without translation">
       <div class="message-header">
         <span class="username">{{ m.username }}</span>
         <span class="timestamp">[{{ getCurrentDateTime() }}]</span>
       </div>
-      <div class="message-content">{{ m.text }}</div>
+        <span class="tooltiptext">{{ m.message }}</span>
+      <div class="message-content" >{{ m.text }}</div>
       </div>
     </div>
   </div>

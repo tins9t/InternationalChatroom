@@ -24,10 +24,11 @@ public class ClientWantsToTranslateMessage() : BaseEventHandler<ClientWantsToTra
          var detectedLanguage = translationRoot[0].detectedLanguage;
          var translations = translationRoot[0].translations;
 
-         Console.WriteLine($"Detected Language: {detectedLanguage.language}");
-         Console.WriteLine($"Score: {detectedLanguage.score}");
-         Console.WriteLine($"Translated Text: {translations[0].text}");
-         Console.WriteLine($"Target Language: {translations[0].to}");
+         //Console.WriteLine($"Detected Language: {detectedLanguage.language}");
+         //Console.WriteLine($"Score: {detectedLanguage.score}");
+         //Console.WriteLine($"Translated Text: {translations[0].text}");
+         //Console.WriteLine($"Target Language: {translations[0].to}");
+         socket.Send(JsonSerializer.Serialize(new { type = "translatedMessage", data = new { text = translations[0].text, to = translations[0].to } }));
     }
 }
 // Root myDeserializedClass = JsonConvert.DeserializeObject<List<Root>>(myJsonResponse);

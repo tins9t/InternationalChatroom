@@ -94,8 +94,8 @@ public class TranslationService
                 HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
                 // Read response as a string.
                 string result = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Result of Message to Translate: "+result);
                 return result;
-
             }
         }
     }

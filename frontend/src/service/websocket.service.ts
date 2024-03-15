@@ -45,9 +45,13 @@ export class WebsocketService {
     }
   }
 
-  async translateText(text: string): Promise<Translation>{
-    const call = this.http.post<Translation>('http://localhost:5082/api/translate', {text: text, languageCode: this.getLanguageCode()});
-    return firstValueFrom(call);
+  async translateText(text: string): Promise<string>{
+    const requestBody = { Text: text, To: this.getLanguageCode() };
+    console.log("Request Body:", requestBody);
+    const call = this.http.post<string>('http://localhost:5082/api/translate', requestBody);
+    const response = await firstValueFrom(call);
+    console.log(response);
+    return response;
   }
 
   ServerBroadcastsMessageWithUsername(dto: ServerBroadcastsMessageWithUsernameDto) {
@@ -55,7 +59,7 @@ export class WebsocketService {
       // Translate the message text
       this.translateText(dto.message.message!).then((translation) => {
         // Update the message text with the translated text
-        dto.message!.Text = translation.Text;
+        dto.message!.text = translation;
 
         // Push the updated message into the messages array
         this.messages.push(dto.message!);

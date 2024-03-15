@@ -37,7 +37,6 @@ export class RoomComponent {
   }
 
   getMessages(){
-    console.log("Messages: "+this.service.messages)
     return this.service.messages;
   }
 
@@ -45,7 +44,7 @@ export class RoomComponent {
     this.service.sendDto(new ClientWantsToBroadcastToRoom({roomId: Number.parseInt(this.getRoomId()), message: this.messagesContent.value!}))
     const messages = this.getMessages();
     messages.forEach((message) => {
-      console.log("Message Text: ", message.Text); // Print the text of each message
+      console.log("Message Text: ", message.text); // Print the text of each message
     });
     console.log("Language code: "+this.service.getLanguageCode())
     this.messagesContent.setValue('');

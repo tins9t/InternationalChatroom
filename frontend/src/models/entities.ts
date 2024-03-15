@@ -1,7 +1,7 @@
 export class Message {
   username?: string;
   message?: string;
-  Text?: string;
+  text?: string;
 }
 export class Translation {
   Text?: string;

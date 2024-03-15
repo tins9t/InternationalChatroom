@@ -42,6 +42,7 @@ public static class ApiStartUp
                 StateService.AddConnection(socket);
                 Console.WriteLine("Open!");
                 Connections.allSockets.Add(socket);
+                await TranslationService.TranslateText("hello", "da");
 
                 try
                 {

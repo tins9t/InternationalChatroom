@@ -9,7 +9,7 @@ namespace InternationalChatroom.ClientEventHandlers;
 
 public class ClientWantsToBroadcastToRoomDto : BaseDto
 {
-    public string messageContent { get; set; }
+    public string message { get; set; }
     public int roomId { get; set; }
 }
 
@@ -21,7 +21,7 @@ public class ClientWantsToBroadcastToRoom()
         await TranslationService.GetLanguages();
         var insertedMessage = new Message
         {
-            message = dto.messageContent,
+            message = dto.message,
             username = StateService.Connections[socket.ConnectionInfo.Id].Username
         };
         var message = new ServerBroadcastsMessageWithUsername()

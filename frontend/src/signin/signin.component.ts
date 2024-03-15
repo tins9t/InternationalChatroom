@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {Button, LanguageInfo} from '../models/entities';
+import {LanguageInfo, Theme} from '../models/entities';
 import {WebsocketService} from "../service/websocket.service";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -15,7 +15,7 @@ import { firstValueFrom } from 'rxjs';
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
-  buttons: Button[] = [
+  buttons: Theme[] = [
     { roomId: 1, name: '🐶Animals🐶' },
     { roomId: 2, name: '⚽️Sport⚽️' },
     { roomId: 3, name: '🎮Gaming🎮' },
@@ -27,6 +27,7 @@ export class SigninComponent {
   selectedChatroomId: number | null = null;
   selectedLanguage: string | null = null;
   languages: { [key: string]: LanguageInfo } = {};
+  warning: string | null = null;
 
   constructor(private service: WebsocketService, private router: Router, private http : HttpClient) {
     this.getLanguages();
@@ -38,7 +39,7 @@ export class SigninComponent {
   }
 
   clickStart() {
-    if(this.selectedChatroomId!=null){
+    if(this.selectedChatroomId!=null && this.selectedLanguage!=null && this.username!=null){
       var object = {
         eventType: "ClientWantsToSignIn",
         username: this.username.value
@@ -50,6 +51,9 @@ export class SigninComponent {
       }
       this.service.ws.send(JSON.stringify(object2))
       this.router.navigate(['/room/' + this.selectedChatroomId], {replaceUrl: true})
+    }
+    else{
+      this.warning = "Please select username, language and room!"
     }
   }
 

@@ -3,7 +3,7 @@ export class Message {
   message?: string;
 }
 
-export class Button {
+export class Theme {
   roomId?: number;
   name?: string;
 }

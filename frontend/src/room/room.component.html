@@ -1,1 +1,7 @@
-<p>room works!</p>
+<title>{{ title }}</title>
+<div *ngFor="let m of getMessages()">
+  <div class="username">{{ m.username }}</div>
+  <p class="message-content">{{ m.message }}</p>
+</div>
+<input [formControl]="messagesContent" type="text" placeholder="Type your message here...">
+<button (click)="clickSend()">Send</button>

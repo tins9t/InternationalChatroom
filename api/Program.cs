@@ -45,11 +45,7 @@ public static class ApiStartUp
 
                 try
                 {
-                    MessageToTranslate messageToTranslate = new MessageToTranslate();
-                    messageToTranslate.To = "de";
-                    messageToTranslate.Text = "Hello";
-                    await TranslationService.TranslateText(messageToTranslate);
-                    await TranslationService.GetLanguages();
+                    
                 }
                 catch (Exception e)
                 {

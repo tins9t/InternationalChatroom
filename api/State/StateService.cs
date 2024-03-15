@@ -5,6 +5,7 @@ public class WebSocketMetaData(IWebSocketConnection connection)
 {
     public IWebSocketConnection Connection { get; set; } = connection;
     public string Username { get; set; }
+    public string Language { get; set; }
 }
 
 public static class StateService

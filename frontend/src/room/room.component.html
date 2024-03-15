@@ -1,7 +1,21 @@
-<title>{{ title }}</title>
-<div *ngFor="let m of getMessages()">
-  <div class="username">{{ m.username }}</div>
-  <p class="message-content">{{ m.message }}</p>
+<body>
+<h3>🐶Animals🐶</h3>
+<div class="chat-wrapper">
+  <div class="container">
+    <div *ngFor="let m of getMessages()" class="chat-container">
+      <img src="assets/doggo.png" alt="Avatar" class="avatar">
+      <div class="message">
+      <div class="message-header">
+        <span class="username">{{ m.username }}</span>
+        <span class="timestamp">[{{ getCurrentDateTime() }}]</span>
+      </div>
+      <div class="message-content">{{ m.Text }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="input-container">
+    <input [formControl]="messagesContent" type="text" placeholder="Type your message here..." (keydown.enter)="clickSend()">
+    <button (click)="clickSend()">Send</button>
+  </div>
 </div>
-<input [formControl]="messagesContent" type="text" placeholder="Type your message here...">
-<button (click)="clickSend()">Send</button>
+</body>

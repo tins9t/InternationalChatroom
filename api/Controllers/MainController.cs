@@ -14,10 +14,10 @@ public class MainController : ControllerBase
         return TranslationService.GetLanguages();
     }
     
-    [Route("/api/hello")]
-    [HttpGet]
-    public string TestConnection()
+    [Route("/api/translate")]
+    [HttpPost]
+    public async Task<string> TranslateText([FromBody] TranslationService.MessageToTranslate dto)
     {
-        return "Hello!";
+        return await TranslationService.TranslateText(dto.Text, dto.To);
     }
 }

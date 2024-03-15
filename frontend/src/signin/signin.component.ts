@@ -29,9 +29,8 @@ export class SigninComponent {
   languages: { [key: string]: LanguageInfo } = {};
   warning: string | null = null;
 
-  constructor(private service: WebsocketService, private router: Router, private http : HttpClient) {
+  constructor(public service: WebsocketService, private router: Router, private http : HttpClient) {
     this.getLanguages();
-    this.service.setLanguageCode(this.selectedLanguage!);
   }
 
   selectChatroom(roomId: number | undefined): void {
@@ -40,6 +39,7 @@ export class SigninComponent {
   }
 
   clickStart() {
+    this.service.setLanguageCode(this.selectedLanguage!);
     if(this.selectedChatroomId!=null && this.selectedLanguage!=null && this.username!=null){
       var object = {
         eventType: "ClientWantsToSignIn",

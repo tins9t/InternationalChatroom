@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseDto, ServerBroadcastsMessageWithUsernameDto } from '../models/baseDto';
-import { Message } from '../models/entities';
+import {Message, Translation} from '../models/entities';
+import {firstValueFrom} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class WebsocketService {
   public messages: Message[] = [];
   languageCode: string = '';
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.handleEvent();
   }
 
@@ -43,9 +45,24 @@ export class WebsocketService {
     }
   }
 
+  async translateText(text: string): Promise<Translation>{
+    const call = this.http.post<Translation>('http://localhost:5082/api/translate', {text: text, languageCode: this.getLanguageCode()});
+    return firstValueFrom(call);
+  }
+
   ServerBroadcastsMessageWithUsername(dto: ServerBroadcastsMessageWithUsernameDto) {
     if (dto.message !== undefined) {
-      this.messages.push(dto.message);
+      // Translate the message text
+      this.translateText(dto.message.message!).then((translation) => {
+        // Update the message text with the translated text
+        dto.message!.Text = translation.Text;
+
+        // Push the updated message into the messages array
+        this.messages.push(dto.message!);
+      }).catch((error) => {
+        // Handle translation error if needed
+        console.error("Translation Error:", error);
+      });
     }
   }
 }

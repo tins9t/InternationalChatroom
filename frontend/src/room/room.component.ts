@@ -18,11 +18,18 @@ export class RoomComponent {
   constructor(private route: ActivatedRoute, private service: WebsocketService) {
   }
 
-  title: string | null = null;
+  title: string | null = "🐶Animals🐶";
   messagesContent = new FormControl('')
 
   getRoomId(){
     return this.route.snapshot.params['roomId'];
+  }
+
+  getCurrentDateTime(): string {
+    const currentDate = new Date();
+    const date = currentDate.toLocaleDateString();
+    const time = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return `${date} ${time}`;
   }
 
   getRoomName(){
@@ -36,5 +43,11 @@ export class RoomComponent {
 
   clickSend() {
     this.service.sendDto(new ClientWantsToBroadcastToRoom({roomId: Number.parseInt(this.getRoomId()), message: this.messagesContent.value!}))
+    const messages = this.getMessages();
+    messages.forEach((message) => {
+      console.log("Message Text: ", message.Text); // Print the text of each message
+    });
+    console.log("Language code: "+this.service.getLanguageCode())
+    this.messagesContent.setValue('');
   }
 }

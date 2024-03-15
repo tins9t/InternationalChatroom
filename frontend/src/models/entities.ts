@@ -1,6 +1,11 @@
 export class Message {
   username?: string;
   message?: string;
+  Text?: string;
+}
+export class Translation {
+  Text?: string;
+  To?: string;
 }
 
 export class Theme {

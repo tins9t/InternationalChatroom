@@ -11,9 +11,18 @@ export class WebsocketService {
 
   ws: WebSocket = new WebSocket("ws://localhost:8181")
   public messages: Message[] = [];
+  languageCode: string = '';
 
   constructor() {
     this.handleEvent();
+  }
+
+  setLanguageCode(code: string) {
+    this.languageCode = code;
+  }
+
+  getLanguageCode(): string {
+    return this.languageCode;
   }
 
   sendDto(dto: BaseDto<any>) {

@@ -31,6 +31,7 @@ export class SigninComponent {
 
   constructor(private service: WebsocketService, private router: Router, private http : HttpClient) {
     this.getLanguages();
+    this.service.setLanguageCode(this.selectedLanguage!);
   }
 
   selectChatroom(roomId: number | undefined): void {

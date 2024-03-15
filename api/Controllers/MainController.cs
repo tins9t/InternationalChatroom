@@ -9,7 +9,7 @@ public class MainController : ControllerBase
     
     [Route("/api/languages")]
     [HttpGet]
-    public Task<Dictionary<string, LanguageInfo>> GetLanguages()
+    public Task<Dictionary<string, TranslationService.LanguageInfo>> GetLanguages()
     {
         return TranslationService.GetLanguages();
     }
